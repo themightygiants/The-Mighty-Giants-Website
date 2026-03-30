@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #000;
+}
+
+body {
+  color: #fff;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255, 212, 0, 0.12), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(255, 212, 0, 0.08), transparent 30%);
+}
+
+.section-wrap {
+  @apply mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8;
+}
+
+.poster-title {
+  @apply text-balance font-black uppercase tracking-wider text-mightyYellow;
+}
+
+/* Character bio lightbox */
+@keyframes lightbox-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox-panel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes lightbox-image-in {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lightbox-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lightbox-backdrop {
+  animation: lightbox-backdrop-in 0.38s ease-out forwards;
+}
+
+.lightbox-panel {
+  animation: lightbox-panel-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center center;
+}
+
+.lightbox-image-wrap {
+  animation: lightbox-image-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+  transform-origin: center top;
+}
+
+.lightbox-copy {
+  animation: lightbox-fade-up 0.5s ease-out 0.14s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-backdrop,
+  .lightbox-panel,
+  .lightbox-image-wrap,
+  .lightbox-copy {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
