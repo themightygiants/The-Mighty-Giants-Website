@@ -15,7 +15,6 @@ export default function HomePage() {
           preload="metadata"
         >
           <source src="/videos/tmg-intro-web.mp4" type="video/mp4" />
-          <source src="/videos/tmg-intro.mp4" type="video/mp4" />
         </video>
         <div className="-z-10 absolute inset-0 bg-black/60" />
         <div className="section-wrap py-24 text-center sm:py-32">

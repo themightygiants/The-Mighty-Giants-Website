@@ -23,3 +23,7 @@ pnpm-debug.log*
 
 # local scratch / fetched HTML (not for repo)
 tmp-*.html
+
+# Original 4K hero video — exceeds GitHub 100MB file limit. Use tmg-intro-web.mp4 only.
+# Keep the full-res file in _website-assets on your machine if you need it.
+public/videos/tmg-intro.mp4

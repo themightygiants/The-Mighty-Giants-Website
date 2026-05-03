@@ -1,6 +1,32 @@
-export default function BookingForm() {
+const FORMSUBMIT_EMAIL = "the.mighty.giants.mgmt@gmail.com";
+
+type Props = {
+  /** Full URL to redirect after successful submit (e.g. https://yoursite.com/booking?success=1) */
+  redirectAfterSubmit: string;
+};
+
+export default function BookingForm({ redirectAfterSubmit }: Props) {
+  const action = `https://formsubmit.co/${FORMSUBMIT_EMAIL}`;
+
   return (
-    <form className="grid grid-cols-1 gap-4 rounded-xl border border-mightyYellow/35 bg-zinc-900/60 p-6 shadow-poster">
+    <form
+      action={action}
+      method="POST"
+      className="grid grid-cols-1 gap-4 rounded-xl border border-mightyYellow/35 bg-zinc-900/60 p-6 shadow-poster"
+    >
+      <input type="hidden" name="_subject" value="Booking request — The Mighty Giants" />
+      <input type="hidden" name="_next" value={redirectAfterSubmit} />
+      <input type="hidden" name="_template" value="table" />
+      {/* Honeypot — FormSubmit; leave empty */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-[9999px] h-0 w-0 opacity-0"
+      />
+
       <div>
         <label htmlFor="name" className="mb-1 block text-xs font-bold uppercase tracking-wide">
           Name
@@ -77,7 +103,8 @@ export default function BookingForm() {
         Send Booking Request
       </button>
       <p className="text-xs uppercase tracking-wide text-mightyWhite/60">
-        Ready for Formspree, direct email, or API integration.
+        Submissions are sent to <span className="text-mightyYellow">{FORMSUBMIT_EMAIL}</span>. First
+        time only: check that inbox for a FormSubmit activation link if delivery does not arrive.
       </p>
     </form>
   );
